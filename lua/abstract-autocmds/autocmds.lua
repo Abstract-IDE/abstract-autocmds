@@ -69,4 +69,12 @@ function M.give_border(opts)
 	})
 end
 
+function M.dont_suspend_with_cz()
+	create_autocmd("BufEnter", {
+		desc = "map ctl+z to nothing so that it don't suspend terminal",
+		pattern = "*",
+		command = "nnoremap <c-z> <nop>",
+	})
+end
+
 return M

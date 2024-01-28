@@ -1,4 +1,3 @@
-local set_keymap = require("abstract-autocmds.utils").set_keymap
 local M = {}
 
 -- smart deletion, dd
@@ -13,7 +12,44 @@ function M.smart_dd()
 			return "dd"
 		end
 	end
-	set_keymap("n", "dd", dd)
+	vim.keymap.set("n", "dd", dd, { noremap = true, expr = true })
+end
+
+-- easier moving of code blocks
+-- Try to go into visual mode (v), thenselect several lines of code
+-- here and then press ``>`` several times.
+function M.visually_codeblock_shift()
+	vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
+end
+
+-- move selected line(s) up or down
+function M.move_selected_upndown()
+	vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+end
+
+-- going back to normal mode which works even in vim's terminal
+-- eg: you may need this if you use floaterm to escape terminal
+function M.go_back_normal_in_terminal()
+	vim.api.nvim_set_keymap("t", "<Esc>", "<c-\\><c-n>", { noremap = true, silent = true })
+end
+
+-- delete a word backward in insert mode with Ctrl+Backspace
+function M.ctrl_backspace_delete()
+	vim.api.nvim_set_keymap("i", "<C-BS>", "<C-w>", { noremap = true })
+end
+
+-- In visual mode ('x'), pressing 'p' replaces the selected text with the content
+-- of the default register, effectively pasting the last deleted or yanked text.
+function M.smart_visual_paste()
+	vim.api.nvim_set_keymap("x", "p", [[<Cmd>silent! normal! "_dP<CR>]], { noremap = true, silent = true })
+end
+
+-- write/save when the buffer has been modified.
+function M.smart_save_in_insert_mode()
+	vim.api.nvim_set_keymap("i", "<C-s>", "<ESC>ma<ESC>:update <CR>`a", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", "<C-s>", "<ESC>ma<ESC>:update <CR>`a", { noremap = true, silent = true })
 end
 
 return M

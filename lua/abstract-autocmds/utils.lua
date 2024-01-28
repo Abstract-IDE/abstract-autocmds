@@ -11,8 +11,4 @@ function M.opts_extend(default, opts)
 	return vim.tbl_extend("force", default, opts ~= nil and opts or {})
 end
 
-function M.set_keymap(mode, lhs, rhs)
-	vim.keymap.set(mode, lhs, rhs, { noremap = true, expr = true })
-end
-
 return M
