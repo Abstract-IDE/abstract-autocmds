@@ -5,7 +5,6 @@ local opts_extend = require("abstract-autocmds.utils").opts_extend
 
 function M.highlight_on_yank(opts)
 	opts = opts_extend({ timeout = 150 }, opts)
-	-- print(vim.inspect(opts))
 	create_autocmd("TextYankPost", {
 		desc = "highlight text on yank",
 		pattern = "*",

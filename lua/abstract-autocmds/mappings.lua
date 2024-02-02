@@ -52,4 +52,10 @@ function M.smart_save_in_insert_mode()
 	vim.api.nvim_set_keymap("n", "<C-s>", "<ESC>ma<ESC>:update <CR>`a", { noremap = true, silent = true })
 end
 
+-- scroll up/down from center of screen
+function M.scroll_from_center()
+	vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+end
+
 return M
