@@ -1,3 +1,4 @@
+local opts_extend = require("abstract-autocmds.utils").opts_extend
 local M = {}
 
 -- smart deletion, dd
@@ -36,8 +37,12 @@ function M.go_back_normal_in_terminal()
 end
 
 -- delete a word backward in insert mode with Ctrl+Backspace
-function M.ctrl_backspace_delete()
+function M.ctrl_backspace_delete(opts)
+	opts = opts_extend({ cmd_mode = true }, opts)
 	vim.api.nvim_set_keymap("i", "<C-BS>", "<C-w>", { noremap = true })
+	if opts.cmd_mode then
+		vim.api.nvim_set_keymap("c", "<C-BS>", "<C-w>", { noremap = true })
+	end
 end
 
 -- In visual mode ('x'), pressing 'p' replaces the selected text with the content

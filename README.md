@@ -3,9 +3,11 @@ Useful autocmds for Neovim.
 # Installation and Uses.
 
 ### using lazy.nvim
+
 All commands are disabled by default.
+
 ```lua
-	
+
 {
 	"Abstract-IDE/abstract-autocmds",
 	lazy = false,
@@ -32,7 +34,12 @@ All commands are disabled by default.
 			visually_codeblock_shift = true,
 			move_selected_upndown = true,
 			go_back_normal_in_terminal = true,
-			ctrl_backspace_delete = false,
+			ctrl_backspace_delete = {
+				enable = true,
+				opts = {
+					cmd_mode = false,
+				},
+			},
 			smart_visual_paste = true,
 			dont_suspend_with_cz = true,
 			smart_save_in_insert_mode = true,
@@ -41,7 +48,6 @@ All commands are disabled by default.
 	end,
 }
 ```
-
 
 # Available autocmds
 
@@ -121,10 +127,15 @@ Provides a way to return to normal mode within Neovim's terminal, ensuring compa
 go_back_normal_in_terminal = true
 ```
 
-Enables deleting a word backward in insert mode using Ctrl+Backspace.
+Enables deleting a word backward in insert or/and command mode using Ctrl+Backspace.
 
 ```lua
-ctrl_backspace_delete = true
+ctrl_backspace_delete = {
+	enable = true,
+	opts = {
+		cmd_mode = false,
+	},
+},
 ```
 
 Enhances visual mode ('x') behavior so that pressing 'p' replaces the selected text with the content of the default register, effectively pasting the last deleted or yanked text.
@@ -150,4 +161,3 @@ Enhances scrolling behavior in normal mode, allowing scrolling up/down from the 
 ```lua
 scroll_from_center = true
 ```
-
