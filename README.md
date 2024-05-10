@@ -140,7 +140,8 @@ ctrl_backspace_delete = {
 },
 ```
 
-Enhances visual mode ('x') behavior so that pressing 'p' replaces the selected text with the content of the default register, effectively pasting the last deleted or yanked text.
+Paste in visual mode without overwriting the yank register
+DEFAULT BEHAVIPR: in visual mode ('x'), pressing 'p' replaces the selected text with the content of the default register, effectively pasting the last deleted or yanked text.
 
 ```lua
 smart_visual_paste = true

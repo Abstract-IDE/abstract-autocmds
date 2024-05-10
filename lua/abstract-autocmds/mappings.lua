@@ -47,7 +47,8 @@ function M.ctrl_backspace_delete(opts)
 	end
 end
 
--- In visual mode ('x'), pressing 'p' replaces the selected text with the content
+-- Paste in visual mode without overwriting the yank register
+-- DEFAULT BEHAVIPR: in visual mode ('x'), pressing 'p' replaces the selected text with the content
 -- of the default register, effectively pasting the last deleted or yanked text.
 function M.smart_visual_paste()
 	vim.api.nvim_set_keymap("x", "p", [[<Cmd>silent! normal! "_dP<CR>]], { noremap = true, silent = true })
