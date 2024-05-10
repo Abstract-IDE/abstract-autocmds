@@ -38,8 +38,10 @@ end
 
 -- delete a word backward in insert mode with Ctrl+Backspace
 function M.ctrl_backspace_delete(opts)
-	opts = opts_extend({ cmd_mode = true }, opts)
-	vim.api.nvim_set_keymap("i", "<C-BS>", "<C-w>", { noremap = true })
+	opts = opts_extend({ cmd_mode = true, insert_mode = true }, opts)
+	if opts.insert_mode then
+		vim.api.nvim_set_keymap("i", "<C-BS>", "<C-w>", { noremap = true })
+	end
 	if opts.cmd_mode then
 		vim.api.nvim_set_keymap("c", "<C-BS>", "<C-w>", { noremap = true })
 	end

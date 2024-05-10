@@ -37,6 +37,7 @@ All commands are disabled by default.
 			ctrl_backspace_delete = {
 				enable = true,
 				opts = {
+					insert_mode = true,
 					cmd_mode = false,
 				},
 			},
@@ -133,6 +134,7 @@ Enables deleting a word backward in insert or/and command mode using Ctrl+Backsp
 ctrl_backspace_delete = {
 	enable = true,
 	opts = {
+		insert_mode = true,
 		cmd_mode = false,
 	},
 },
