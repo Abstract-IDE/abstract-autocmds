@@ -45,6 +45,7 @@ All commands are disabled by default.
 			dont_suspend_with_cz = true,
 			smart_save_in_insert_mode = true,
 			scroll_from_center = true,
+			search_within_visual = true,
 		})
 	end,
 }

@@ -66,4 +66,9 @@ function M.scroll_from_center()
 	vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 end
 
+-- search within visual selection
+function M.search_within_visual()
+	vim.api.nvim_set_keymap("x", "/", "<Esc>/\\%V", { noremap = true })
+end
+
 return M
