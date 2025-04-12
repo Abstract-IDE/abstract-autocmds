@@ -9,7 +9,7 @@ function M.highlight_on_yank(opts)
 		desc = "highlight text on yank",
 		pattern = "*",
 		callback = function()
-			vim.highlight.on_yank({
+			vim.hl.on_yank({
 				higroup = "Search",
 				timeout = opts.timeout,
 				on_visual = true,
